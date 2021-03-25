@@ -1,20 +1,20 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy {
-  showSpinner = true;
+export class HeaderComponent implements OnInit, OnDestroy {
+  @Output()
+  buttonClicked = new EventEmitter<void>();
   userIsAuthenticated = false;
   private authListenerSubs: Subscription = new Subscription;
+  constructor(private authService: AuthService) { }
 
-  constructor(public authService: AuthService) {}
   ngOnInit(): void {
-    this.authService.autoAuthUser();
     this.userIsAuthenticated = this.authService.getAuthStatus();
     this.authListenerSubs =  this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
       this.userIsAuthenticated = isAuthenticated;
@@ -23,7 +23,11 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.authListenerSubs.unsubscribe();
   }
+  onToggle() {
+    this.buttonClicked.emit();
+  }
   onLogout() {
     this.authService.logoutUser();
   }
+
 }
