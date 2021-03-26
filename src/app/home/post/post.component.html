@@ -12,6 +12,7 @@
   <mat-card-actions>
     <button mat-button>LIKE</button>
     <button mat-button>SHARE</button>
-    <button mat-button (click)="deletePost()" *ngIf="postDeletable">DELETE</button>
+    <a [routerLink]="['/edit/', post._id]"  *ngIf="postDeletable && userId == post.creator" mat-button>EDIT</a>
+    <button mat-button (click)="deletePost()" *ngIf="postDeletable && userId == post.creator">DELETE</button>
   </mat-card-actions>
 </mat-card>

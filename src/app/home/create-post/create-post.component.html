@@ -12,7 +12,7 @@
                     type="text" 
                     placeholder="Post Title" 
                     name="title" 
-                    ngModel
+                    [ngModel]="post?.title"
                     required
                     #titleInput="ngModel">
                 <mat-error *ngIf="!titleInput.hasError('required')">Field must not be empty</mat-error>
@@ -23,12 +23,13 @@
                     type="text" 
                     placeholder="Post Content" 
                     name="content" 
-                    ngModel
+                    [ngModel]="post?.content"
                     required
                     #contentInput="ngModel">
                 <mat-error *ngIf="!contentInput.hasError('required')">Field must not be empty</mat-error>
             </mat-form-field>
-            <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
+            <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid" *ngIf="!isLoading">Submit</button>
+            <mat-spinner *ngIf="isLoading" [diameter]="40"></mat-spinner>
         </form>
     </mat-card>
 </section>

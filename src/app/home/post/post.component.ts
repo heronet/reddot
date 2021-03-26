@@ -16,10 +16,12 @@ export class PostComponent implements OnInit, OnDestroy {
   @Input() post: any;
   postCreator: string = "";
   @Input()  postDeletable = false;
+  @Input() userId: any;
   
   @Output() spinnerEvent = new EventEmitter<void>();
+  @Output() postDeleted = new EventEmitter<any>();
 
-  constructor(private postService: PostService, public http: HttpClient, private router: Router) { }
+  constructor(private postService: PostService, public http: HttpClient) { }
 
   ngOnInit(): void {
     this.http.get<User>(`http://localhost:4000/api/users/${this.post?.creator}`).subscribe(res => {
@@ -32,7 +34,7 @@ export class PostComponent implements OnInit, OnDestroy {
     
   }
   deletePost() {
-    this.postService.deletePost(this.post?._id);
+    this.postDeleted.emit(this.post._id);
   }
 
 }

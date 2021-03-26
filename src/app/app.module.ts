@@ -15,6 +15,8 @@ import { HomeComponent } from './home/home.component';
 import { PostComponent } from './home/post/post.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { CreatePostComponent } from './home/create-post/create-post.component';
+import { ErrorInterceptor } from './error-interceptor';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { CreatePostComponent } from './home/create-post/create-post.component';
     SignupComponent,
     HomeComponent,
     PostComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,11 @@ import { CreatePostComponent } from './home/create-post/create-post.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent]
 })
 export class AppModule { }

@@ -21,3 +21,6 @@ mat-card {
   padding: 10px;
   margin: 5px 10px;
 }
+mat-spinner {
+  margin: 0 auto;
+}
