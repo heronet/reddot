@@ -4,6 +4,10 @@ import { Router } from "@angular/router";
 import { Subject } from "rxjs";
 import { User } from "../models/User";
 
+import { environment } from "src/environments/environment";
+
+const BASE_URL=`${environment.apiUrl}users/`
+
 @Injectable({
     providedIn: "root"
 })
@@ -30,7 +34,7 @@ export class AuthService {
     }
 
     createUser(user: User) {
-        this.http.post<User>("http://localhost:4000/api/users/signup", user).subscribe(res => {
+        this.http.post<User>(BASE_URL + "signup", user).subscribe(res => {
             console.log(res);
             this.router.navigate(['/']);
         }, error => {
@@ -38,7 +42,7 @@ export class AuthService {
         });
     }
     loginUser(data: {email: string, password: string}) {
-        this.http.post<{token: string, expiresIn: number, userId: string}>("http://localhost:4000/api/users/login", data).subscribe(res => {
+        this.http.post<{token: string, expiresIn: number, userId: string}>(BASE_URL + "login", data).subscribe(res => {
             this.token = res.token;
             console.log(this.token);
             if(this.token) {
