@@ -1,3 +1,4 @@
 <app-post *ngFor="let post of posts" [userId]="userId" [post]="post" [postDeletable]="postDeletable" class="feed" (spinnerEvent)="spinner()" (postDeleted)="deletePost($event)"></app-post>
+<mat-spinner *ngIf="showSpinner" style="margin: 0 auto; margin-top: 50px;" [diameter]="50"></mat-spinner>
 <mat-paginator *ngIf="posts.length > 0" [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)"></mat-paginator>
-<mat-spinner *ngIf="showSpinner" style="margin: 0 auto; margin-top: 50px;" [diameter]="100"></mat-spinner>
+
