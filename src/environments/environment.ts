@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "https://rocky-garden-91885.herokuapp.com/api/"
+  apiUrl: "http://localhost:4000/api/"
 };
 
 /*

@@ -15,18 +15,19 @@
                     [ngModel]="post?.title"
                     required
                     #titleInput="ngModel">
-                <mat-error *ngIf="!titleInput.hasError('required')">Field must not be empty</mat-error>
+                <mat-error *ngIf="titleInput.hasError('required')">Field must not be empty</mat-error>
             </mat-form-field>
             <mat-form-field>
-                <input 
+                <mat-label>Write your mind</mat-label>
+                <textarea 
                     matInput 
-                    type="text" 
-                    placeholder="Post Content" 
+                    type="te" 
+                    placeholder="Write your post" 
                     name="content" 
                     [ngModel]="post?.content"
                     required
-                    #contentInput="ngModel">
-                <mat-error *ngIf="!contentInput.hasError('required')">Field must not be empty</mat-error>
+                    #contentInput="ngModel"></textarea>
+                <mat-error *ngIf="contentInput.hasError('required')">Field must not be empty</mat-error>
             </mat-form-field>
             <button type="submit" mat-raised-button [style]="f.valid ? 'background-color: royalblue;': ''" [disabled]="f.invalid" *ngIf="!isLoading">Submit</button>
             <mat-spinner *ngIf="isLoading" [diameter]="40"></mat-spinner>

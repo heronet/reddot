@@ -1,10 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { User } from 'src/app/models/User';
-import { environment } from 'src/environments/environment';
-
-
-const BASE_URL = environment.apiUrl;
 
 @Component({
   selector: 'app-post',
@@ -14,7 +9,6 @@ const BASE_URL = environment.apiUrl;
 
 export class PostComponent implements OnInit, OnDestroy {
   @Input() post: any;
-  postCreator: string = "";
   @Input()  postDeletable = false;
   @Input() userId: any;
   
@@ -24,10 +18,7 @@ export class PostComponent implements OnInit, OnDestroy {
   constructor(public http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get<User>(`${BASE_URL}users/${this.post?.creator}`).subscribe(res => {
-      this.postCreator= res.username;
-      this.spinnerEvent.emit();
-    });
+    this.spinnerEvent.emit();
   }
 
   ngOnDestroy() {
