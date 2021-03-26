@@ -9,9 +9,7 @@
   /* Sets the sticky toolbar to be on top */
   z-index: 1000;
   /* Ensure that your app's content doesn't overlap the toolbar */
-}
-.nav-links {
-
+  background-color: royalblue;
 }
 @media only screen and (max-width: 600px) {
   .nav-links {

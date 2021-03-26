@@ -9,10 +9,11 @@
       {{post?.content}}
     </p>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-    <a [routerLink]="['/edit/', post._id]"  *ngIf="postDeletable && userId == post.creator" mat-button>EDIT</a>
-    <button mat-button (click)="deletePost()" *ngIf="postDeletable && userId == post.creator">DELETE</button>
+  <mat-card-actions style="display: flex;">
+    <button mat-stroked-button color="basic">LIKE</button>
+    <button mat-stroked-button color="basic">SHARE</button>
+    <button style="color: royalblue; font-weight: 700;" mat-stroked-button color="primary" [routerLink]="['/edit/', post._id]"  *ngIf="postDeletable && userId == post.creator">EDIT</button>
+    <span class="menu-spacer"></span>
+    <button mat-mini-fab color="primary" (click)="deletePost()" *ngIf="postDeletable && userId == post.creator"><mat-icon>delete</mat-icon></button>
   </mat-card-actions>
 </mat-card>
