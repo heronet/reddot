@@ -22,7 +22,6 @@ export class PostService {
     getPosts(postsPerPage: number, currentPage: number) {
         const params = `?pagesize=${postsPerPage}&page=${currentPage}`;
         this.http.get<{success: boolean, data: Post[], count: number}>(`${BASE_URL}posts${params}`).subscribe(data => {
-            console.log(data);
             this.posts = data.data;
             this.postsUpdated.next({posts: [...this.posts], postCount: data.count});
         });

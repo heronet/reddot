@@ -11,8 +11,13 @@
   /* Ensure that your app's content doesn't overlap the toolbar */
   background-color: royalblue;
 }
+
+.username {
+  color: wheat;
+}
+
 @media only screen and (max-width: 600px) {
   .nav-links {
-    visibility: hidden;
+    display: none;
   }
 }

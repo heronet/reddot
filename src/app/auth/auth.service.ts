@@ -16,7 +16,9 @@ export class AuthService {
     private tokenTimer: any;
     private isAuthenticated = false;
     private userId: any = "";
+    private username: any = "";
     private authStatusListener = new Subject<boolean>();
+    private nameStatusListener = new Subject<any>();
 
     constructor(public http: HttpClient, private router: Router) {}
 
@@ -32,6 +34,12 @@ export class AuthService {
     getUserId() {
         return this.userId;
     }
+    getUserNameSub() {
+        return this.nameStatusListener.asObservable();
+    }
+    getUserName() {
+        return this.username;
+    }
 
     createUser(user: User) {
         this.http.post<User>(BASE_URL + "signup", user).subscribe(res => {
@@ -42,18 +50,19 @@ export class AuthService {
         });
     }
     loginUser(data: {email: string, password: string}) {
-        this.http.post<{token: string, expiresIn: number, userId: string}>(BASE_URL + "login", data).subscribe(res => {
+        this.http.post<{token: string, expiresIn: number, userId: string, username: string}>(BASE_URL + "login", data).subscribe(res => {
             this.token = res.token;
-            console.log(this.token);
             if(this.token) {
                 const expiresInDuration = res.expiresIn;
                 this.setAuthTimer(expiresInDuration);
                 this.authStatusListener.next(true);
                 this.isAuthenticated = true;
                 this.userId = res.userId;
+                this.username = res.username;
+                this.nameStatusListener.next(res.username);
                 const now = new Date();
                 const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
-                this.saveAuthData(this.token, expirationDate, this.userId);
+                this.saveAuthData(this.token, expirationDate, this.userId, res.username);
                 this.router.navigate(['/']);
             }
         }, error => {
@@ -68,6 +77,8 @@ export class AuthService {
         if(expiresIn > 0) {
             this.token = authInformation.token;
             this.userId = authInformation.userId;
+            this.username = authInformation.username;
+            this.nameStatusListener.next(this.username);
             this.isAuthenticated = true;
             this.setAuthTimer(expiresIn / 1000);
             this.authStatusListener.next(true);
@@ -80,32 +91,37 @@ export class AuthService {
         clearInterval(this.tokenTimer);
         this.clearAuthData();
         this.userId = null;
+        this.username = null;
+        this.nameStatusListener.next(this.username);
         this.router.navigate(['/']);
     }
-    private saveAuthData(token: string, expirationDate: Date, userId: any) {
+    private saveAuthData(token: string, expirationDate: Date, userId: any, username: any) {
         localStorage.setItem('token', token);
         localStorage.setItem('userId', userId);
+        localStorage.setItem('username', username);
         localStorage.setItem('expiration', expirationDate.toISOString());
     }
     private clearAuthData() {
         localStorage.removeItem('token');
+        localStorage.removeItem('username');
         localStorage.removeItem('expiration');
         localStorage.removeItem('userId');
+        this.nameStatusListener.next("");
     }
     private getAuthData() {
         const token  = localStorage.getItem("token");
         const expirationDate  = localStorage.getItem("expiration");
         const userId  = localStorage.getItem("userId");
+        const username  = localStorage.getItem("username");
+        this.nameStatusListener.next(username);
         if(!token || !expirationDate) {
             return;
         }
         return {
-            token: token, expirationDate: new Date(expirationDate), userId: userId
+            token: token, expirationDate: new Date(expirationDate), userId: userId, username
         }
     }
     private setAuthTimer(duration: number) {
-        console.log("Setting Timer" + duration);
-        
         this.tokenTimer = setTimeout(() => {
             this.logoutUser();
         }, duration * 1000);

@@ -5,6 +5,7 @@
         <a style="text-decoration: none; color: aliceblue; margin-left: 10px;font-size: 25px;" routerLink="/">Reddot</a>
     </button>
     <span class="menu-spacer"></span>
+    <button mat-button *ngIf="username" [style]="!usernameButton ? 'display: none;' : ''" class="username"><mat-icon>settings_accessibility</mat-icon> {{username}}</button>
     <div class="nav-links">
       <a mat-button [routerLink]="'/create'" *ngIf="userIsAuthenticated">New Post</a>
       <a mat-button [routerLink]="'/login'" *ngIf="!userIsAuthenticated">Login</a>
@@ -12,7 +13,7 @@
       <button mat-button *ngIf="userIsAuthenticated" (click)="onLogout()">Logout</button>
     </div>
     <button mat-icon-button>
-        <mat-icon (click)="onToggle()">menu</mat-icon>
+        <mat-icon (click)="onToggle(); usernameButton = !usernameButton">menu</mat-icon>
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
