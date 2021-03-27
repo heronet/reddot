@@ -17,6 +17,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
 import { CreatePostComponent } from './home/create-post/create-post.component';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
+import { StatusComponent } from './home/status/status.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ErrorComponent } from './error/error.component';
     HomeComponent,
     PostComponent,
     CreatePostComponent,
-    ErrorComponent
+    ErrorComponent,
+    StatusComponent
   ],
   imports: [
     BrowserModule,

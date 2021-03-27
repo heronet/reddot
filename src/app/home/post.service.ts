@@ -37,6 +37,9 @@ export class PostService {
             this.router.navigate(['/']);
         })
     }
+    createPostWithRefresh(data: {title: string, content: string}) {
+        return this.http.post<{}>(`${BASE_URL}posts`, data);
+    }
     updatePost(id: any, data: {title: string, content: string}) {
         this.http.put<{}>(`${BASE_URL}posts/${id}`, data).subscribe(res => {
             this.router.navigate(['/']);
