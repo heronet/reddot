@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "https://tranquil-ravine-72667.herokuapp.com/api/"
+  apiUrl: "https://young-falls-31097.herokuapp.com/api/"
 };
