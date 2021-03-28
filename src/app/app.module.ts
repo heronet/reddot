@@ -19,6 +19,7 @@ import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { StatusComponent } from './home/status/status.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PersonalPostsComponent } from './profile/personal-posts/personal-posts.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ProfileComponent } from './profile/profile.component';
     CreatePostComponent,
     ErrorComponent,
     StatusComponent,
-    ProfileComponent
+    ProfileComponent,
+    PersonalPostsComponent
   ],
   imports: [
     BrowserModule,

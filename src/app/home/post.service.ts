@@ -26,6 +26,11 @@ export class PostService {
             this.postsUpdated.next({posts: [...this.posts], postCount: data.count});
         });
     }
+
+    getPostsByUserId(poster: any) {
+        const params = `?userId=${poster}`;
+        return this.http.get<{success: boolean, data: Post[], count: number}>(`${BASE_URL}posts${params}`);
+    }
     getPost(id: any) {
         return {...this.posts.find(p => p._id === id)};
     }

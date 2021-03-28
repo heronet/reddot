@@ -1,5 +1,8 @@
 <div class="container" *ngIf="user">
   <mat-tab-group>
+    <mat-tab label="Posts">
+      <app-personal-posts [username]="userData.username" [userId]="userId"></app-personal-posts>
+    </mat-tab>
     <mat-tab label="Primary">
       <br>
       <!-- Basic Info -->
@@ -66,11 +69,7 @@
 
     </mat-tab>
 
-
-    <mat-tab label="Contact">
-
-    </mat-tab>
-    <mat-tab label="Third"> Content 3 </mat-tab>
+    <mat-tab label="Not sure about the name"> Dummy </mat-tab>
   </mat-tab-group>
   <br>
 </div>
