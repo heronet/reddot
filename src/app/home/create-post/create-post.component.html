@@ -1,36 +1,24 @@
 <div class="example-container mat-elevation-z3">
-    <div fxLayout fxLayoutAlign="center center">
-        <h1 style="text-align: center; margin: 0;">Create Post</h1>
-    </div>
+  <div fxLayout fxLayoutAlign="center center">
+    <h1 style="text-align: center; margin: 0;">Create Post</h1>
+  </div>
 </div>
 <section class="card-holder">
-    <mat-card>
-        <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="my-form">
-            <mat-form-field>
-                <input 
-                    matInput 
-                    type="text" 
-                    placeholder="Post Title" 
-                    name="title" 
-                    [ngModel]="post?.title"
-                    required
-                    #titleInput="ngModel">
-                <mat-error *ngIf="titleInput.hasError('required')">Field must not be empty</mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Write your mind</mat-label>
-                <textarea 
-                    matInput 
-                    type="te" 
-                    placeholder="Write your post" 
-                    name="content" 
-                    [ngModel]="post?.content"
-                    required
-                    #contentInput="ngModel"></textarea>
-                <mat-error *ngIf="contentInput.hasError('required')">Field must not be empty</mat-error>
-            </mat-form-field>
-            <button type="submit" mat-raised-button [style]="f.valid ? 'background-color: royalblue;': ''" [disabled]="f.invalid" *ngIf="!isLoading">Submit</button>
-            <mat-spinner *ngIf="isLoading" [diameter]="40"></mat-spinner>
-        </form>
-    </mat-card>
+  <mat-card>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="my-form">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Post Title" name="title" [ngModel]="post?.title" required
+          #titleInput="ngModel">
+        <mat-error *ngIf="titleInput.hasError('required')">Field must not be empty</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Write your mind</mat-label>
+        <textarea matInput type="text" placeholder="Write your post" name="content" [ngModel]="post?.content" required
+          #contentInput="ngModel"></textarea>
+        <mat-error *ngIf="contentInput.hasError('required')">Field must not be empty</mat-error>
+      </mat-form-field>
+      <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid" *ngIf="!isLoading">Submit</button>
+      <mat-spinner *ngIf="isLoading" [diameter]="40"></mat-spinner>
+    </form>
+  </mat-card>
 </section>

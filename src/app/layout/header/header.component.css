@@ -1,6 +1,7 @@
 .menu-spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
+
 .app-toolbar {
   position: sticky;
   position: -webkit-sticky;
@@ -9,11 +10,7 @@
   /* Sets the sticky toolbar to be on top */
   z-index: 1000;
   /* Ensure that your app's content doesn't overlap the toolbar */
-  background-color: royalblue;
-}
 
-.username {
-  color: wheat;
 }
 
 @media only screen and (max-width: 600px) {

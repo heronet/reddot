@@ -1,9 +1,9 @@
-<mat-card class="example-card">
+<mat-card class="example-card mat-elevation-z3">
   <mat-card-header>
     <mat-card-title>{{post?.title}}</mat-card-title>
     <mat-card-subtitle>{{post?.creatorName}}</mat-card-subtitle>
   </mat-card-header>
-  
+
   <mat-card-content>
     <p style="white-space: pre-wrap">
       {{post?.content}}
@@ -12,8 +12,11 @@
   <mat-card-actions style="display: flex;">
     <button mat-stroked-button color="basic">LIKE</button>
     <button mat-stroked-button color="basic">SHARE</button>
-    <button style="color: royalblue; font-weight: 700;" mat-stroked-button color="primary" [routerLink]="['/edit/', post._id]"  *ngIf="postDeletable && userId == post.creator">EDIT</button>
+    <button mat-raised-button color="primary" [routerLink]="['/edit/', post._id]"
+      *ngIf="postDeletable && userId == post.creator">EDIT</button>
     <span class="menu-spacer"></span>
-    <button mat-mini-fab color="primary" (click)="deletePost()" *ngIf="postDeletable && userId == post.creator"><mat-icon>delete</mat-icon></button>
+    <button mat-mini-fab color="accent" (click)="deletePost()" *ngIf="postDeletable && userId == post.creator">
+      <mat-icon>delete</mat-icon>
+    </button>
   </mat-card-actions>
 </mat-card>

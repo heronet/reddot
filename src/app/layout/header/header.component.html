@@ -1,4 +1,4 @@
-<mat-toolbar class="mat-elevation-z8 app-toolbar">
+<mat-toolbar class="mat-elevation-z8 app-toolbar" color="primary">
   <mat-toolbar-row>
     <button mat-button>
         <mat-icon >engineering</mat-icon>
@@ -13,7 +13,7 @@
       <button mat-button *ngIf="userIsAuthenticated" (click)="onLogout()">Logout</button>
     </div>
     <button mat-icon-button>
-        <mat-icon (click)="onToggle(); usernameButton = !usernameButton">menu</mat-icon>
+        <mat-icon (click)="onToggle();">menu</mat-icon>
     </button>
   </mat-toolbar-row>
 </mat-toolbar>

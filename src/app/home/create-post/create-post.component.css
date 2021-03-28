@@ -1,5 +1,5 @@
 .my-form {
-  width: 300px;
+  width: 400px;
   padding: 12px;
   display: flex;
   flex-direction: column;
@@ -21,6 +21,7 @@ mat-card {
   padding: 10px;
   margin: 5px 10px;
 }
+
 mat-spinner {
   margin: 0 auto;
 }
