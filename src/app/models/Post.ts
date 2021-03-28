@@ -3,5 +3,6 @@ export interface Post {
     content: string,
     creator: string,
     id: string,
-    creatorName: string
+    creatorName: string,
+    imagePath: string
 }

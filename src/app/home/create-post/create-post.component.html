@@ -1,23 +1,31 @@
 <div class="example-container mat-elevation-z3">
-  <div fxLayout fxLayoutAlign="center center">
+  <div>
     <h1 style="text-align: center; margin: 0;">Create Post</h1>
   </div>
 </div>
 <section class="card-holder">
   <mat-card>
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="my-form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="my-form">
       <mat-form-field>
-        <input matInput type="text" placeholder="Post Title" name="title" [ngModel]="post?.title" required
-          #titleInput="ngModel">
-        <mat-error *ngIf="titleInput.hasError('required')">Field must not be empty</mat-error>
+        <input matInput type="text" formControlName="title" placeholder="Post Title" name="title">
+        <mat-error *ngIf="form.get('title').invalid">Please enter a valid title</mat-error>
       </mat-form-field>
+
+      
       <mat-form-field appearance="outline">
         <mat-label>Write your mind</mat-label>
-        <textarea matInput type="text" placeholder="Write your post" name="content" [ngModel]="post?.content" required
-          #contentInput="ngModel"></textarea>
-        <mat-error *ngIf="contentInput.hasError('required')">Field must not be empty</mat-error>
+        <textarea rows="4" matInput type="text" formControlName="content" placeholder="Write your post"></textarea>
+        <mat-error *ngIf="form.get('content').invalid">Field must valid</mat-error>
       </mat-form-field>
-      <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid" *ngIf="!isLoading">Submit</button>
+      <div>
+        <button mat-raised-button color="primary" style="margin-bottom: 5px;" type="button" (click)="fileInput.click()">Add image</button>
+        <input type="file" name="file"
+          #fileInput style="visibility: hidden;" (change)="onImageSelected($event)">
+      </div>
+      <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+        <img [src]="imagePreview" [alt]="form.value.title">
+      </div>
+      <button type="submit" mat-raised-button color="primary" *ngIf="!isLoading">Submit</button>
       <mat-spinner *ngIf="isLoading" [diameter]="40"></mat-spinner>
     </form>
   </mat-card>

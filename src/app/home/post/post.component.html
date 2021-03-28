@@ -3,7 +3,7 @@
     <mat-card-title>{{post?.title}}</mat-card-title>
     <mat-card-subtitle>{{post?.creatorName}}</mat-card-subtitle>
   </mat-card-header>
-
+<img mat-card-image *ngIf="post?.imagePath" [src]="post?.imagePath" [alt]="post.title">
   <mat-card-content>
     <p style="white-space: pre-wrap">
       {{post?.content}}

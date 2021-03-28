@@ -10,7 +10,7 @@ import { MaterialModule } from './material.module';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './home/post/post.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
@@ -43,7 +43,8 @@ import { DeleteDialogComponent } from './home/post/delete-dialog/delete-dialog.c
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

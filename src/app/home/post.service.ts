@@ -37,16 +37,33 @@ export class PostService {
     getPostUpdateListener() {
         return this.postsUpdated.asObservable();
     }
-    createPost(data: {title: string, content: string}) {
-        this.http.post<{}>(`${BASE_URL}posts`, data).subscribe(res => {
+    createPost(data: {title: string, content: string, image: File}) {
+        const postData = new FormData();
+        postData.append("title", data.title);
+        postData.append("content", data.content);
+        postData.append("image", data.image, data.title);
+
+        this.http.post<{}>(`${BASE_URL}posts`, postData).subscribe(res => {
             this.router.navigate(['/']);
-        })
+        });
     }
-    createPostWithRefresh(data: {title: string, content: string}) {
+    createPostWithRefresh(data: {title: string, content: string, image: any}) {
         return this.http.post<{}>(`${BASE_URL}posts`, data);
     }
-    updatePost(id: any, data: {title: string, content: string}) {
-        this.http.put<{}>(`${BASE_URL}posts/${id}`, data).subscribe(res => {
+    updatePost(id: any, data: {title: string, content: string, image: File | string}) {
+        let postData;
+        if(typeof(data.image) !== 'string') {
+            postData = new FormData();
+            postData.append("id", id);
+            postData.append("title", data.title);
+            postData.append("content", data.content);
+            postData.append("image", data.image, data.title);
+        } else {
+            postData = {
+                ...data
+            }
+        }
+        this.http.put<{}>(`${BASE_URL}posts/${id}`, postData).subscribe(res => {
             this.router.navigate(['/']);
         })
     }

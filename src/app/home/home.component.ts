@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   onStatusUpdate(content: any) {
     const date = new Date().toLocaleString();
     const title = `${this.username}'s feeling on ${date}`;
-    this.postService.createPostWithRefresh({title, content}).subscribe(res => {
+    this.postService.createPostWithRefresh({title, content, image: null}).subscribe(res => {
       this.postService.getPosts(this.postsPerPage, this.currentPage);
     });
     
