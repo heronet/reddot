@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-post',
@@ -15,7 +17,7 @@ export class PostComponent implements OnInit, OnDestroy {
   @Output() spinnerEvent = new EventEmitter<void>();
   @Output() postDeleted = new EventEmitter<any>();
 
-  constructor(public http: HttpClient) { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.spinnerEvent.emit();
@@ -25,7 +27,12 @@ export class PostComponent implements OnInit, OnDestroy {
     
   }
   deletePost() {
-    this.postDeleted.emit(this.post._id);
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      width: '250px'
+    });
+    dialogRef.afterClosed().subscribe(res => {
+      if(res)
+        this.postDeleted.emit(this.post._id);
+    });
   }
-
 }

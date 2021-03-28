@@ -20,6 +20,7 @@ import { ErrorComponent } from './error/error.component';
 import { StatusComponent } from './home/status/status.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PersonalPostsComponent } from './profile/personal-posts/personal-posts.component';
+import { DeleteDialogComponent } from './home/post/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PersonalPostsComponent } from './profile/personal-posts/personal-posts.
     ErrorComponent,
     StatusComponent,
     ProfileComponent,
-    PersonalPostsComponent
+    PersonalPostsComponent,
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,
