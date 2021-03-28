@@ -21,9 +21,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.userService.getUser(this.userId).subscribe(user => {
         this.user = user;
         this.userData = {
-          "username": this.user.username,
-          "name": this.user.name,
-          "email": this.user.email,
+          "Username": this.user.username,
+          "Name": this.user.name,
+          "E-mail": this.user.email,
         }
       });
   }

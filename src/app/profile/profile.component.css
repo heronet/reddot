@@ -4,11 +4,10 @@ mat-spinner {
 }
 table {
   width: 100%;
-  position: relative;
 }
 .container {
-  width: 95;
-  margin: 5px;
+  max-width: 70%;
+  margin: 5px auto;
   padding: 10px;
   padding-top: 0;
   margin-top: 0;

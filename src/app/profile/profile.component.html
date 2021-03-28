@@ -1,25 +1,22 @@
 <div class="container" *ngIf="user">
   <mat-tab-group>
     <mat-tab label="Posts">
-      <app-personal-posts [username]="userData.username" [userId]="userId"></app-personal-posts>
+      <app-personal-posts [username]="userData.Username" [userId]="userId"></app-personal-posts>
     </mat-tab>
     <mat-tab label="Primary">
       <br>
       <!-- Basic Info -->
-      <table mat-table [dataSource]="['name', 'email', 'username']" class="mat-elevation-z8">
+      <table mat-table [dataSource]="['Name', 'E-mail', 'Username']" class="mat-elevation-z8">
         <ng-container matColumnDef="header">
-          <th style="background-color: royalblue; font-size: 20px;" mat-header-cell *matHeaderCellDef
+          <th style="font-size: 20px;"  mat-header-cell *matHeaderCellDef
             [style.text-align]="'center'" [attr.colspan]="3">
             Basic Information
           </th>
         </ng-container>
-        <ng-container matColumnDef="no">
-          <th mat-header-cell *matHeaderCellDef> No. </th>
-          <td mat-cell *matCellDef="let i = index"> {{i + 1}} </td>
-        </ng-container>
+        
         <ng-container matColumnDef="info-title">
           <th mat-header-cell *matHeaderCellDef> Key </th>
-          <td mat-cell *matCellDef="let info"> {{info}} </td>
+          <td mat-cell *matCellDef="let info"> {{info}}: </td>
         </ng-container>
         <ng-container matColumnDef="basic-info">
           <th mat-header-cell *matHeaderCellDef> Data </th>
@@ -27,8 +24,8 @@
         </ng-container>
         
         <tr mat-header-row *matHeaderRowDef="['header']"></tr>
-        <tr mat-header-row *matHeaderRowDef="['no', 'info-title', 'basic-info']"></tr>
-        <tr mat-row *matRowDef="let myRowData; columns: ['no', 'info-title', 'basic-info']"></tr>
+        <tr mat-header-row *matHeaderRowDef="['info-title', 'basic-info']"></tr>
+        <tr mat-row *matRowDef="let myRowData; columns: ['info-title', 'basic-info']"></tr>
       </table>
       <br>
       <!-- Hobbies -->
@@ -36,7 +33,7 @@
         <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
         <ng-container matColumnDef="header">
-          <th style="background-color: royalblue; font-size: 20px;" mat-header-cell *matHeaderCellDef
+          <th style="font-size: 20px;" mat-header-cell *matHeaderCellDef
             [style.text-align]="'center'" [attr.colspan]="2">
             Hobbies
           </th>
