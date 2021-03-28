@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 
@@ -8,15 +9,16 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  @Output()
-  buttonClicked = new EventEmitter<void>();
+
+  @Output() buttonClicked = new EventEmitter<void>();
+
   userIsAuthenticated = false;
   username: string = "";
   usernameButton = true;
   
   private authListenerSubs: Subscription = new Subscription;
   private nameListenerSubs: Subscription = new Subscription;
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.userIsAuthenticated = this.authService.getAuthStatus();
@@ -34,6 +36,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   onToggle() {
     this.buttonClicked.emit();
+  }
+  onProfileClick() {
+    this.router.navigate(['/profile']);
   }
   onLogout() {
     this.authService.logoutUser();

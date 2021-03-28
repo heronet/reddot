@@ -18,6 +18,7 @@ import { CreatePostComponent } from './home/create-post/create-post.component';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { StatusComponent } from './home/status/status.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { StatusComponent } from './home/status/status.component';
     PostComponent,
     CreatePostComponent,
     ErrorComponent,
-    StatusComponent
+    StatusComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

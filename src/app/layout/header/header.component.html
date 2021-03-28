@@ -1,11 +1,11 @@
 <mat-toolbar class="mat-elevation-z8 app-toolbar">
   <mat-toolbar-row>
-    <button mat-button >
+    <button mat-button>
         <mat-icon >engineering</mat-icon>
         <a style="text-decoration: none; color: aliceblue; margin-left: 10px;font-size: 25px;" routerLink="/">Reddot</a>
     </button>
     <span class="menu-spacer"></span>
-    <button mat-button *ngIf="username" [style]="!usernameButton ? 'display: none;' : ''" class="username"><mat-icon>settings_accessibility</mat-icon> {{username}}</button>
+    <button mat-button *ngIf="username" [style]="!usernameButton ? 'display: none;' : ''" class="username" (click)="onProfileClick()"><mat-icon>settings_accessibility</mat-icon> {{username}}</button>
     <div class="nav-links">
       <a mat-button [routerLink]="'/create'" *ngIf="userIsAuthenticated">New Post</a>
       <a mat-button [routerLink]="'/login'" *ngIf="!userIsAuthenticated">Login</a>
