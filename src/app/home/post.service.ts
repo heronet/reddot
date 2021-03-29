@@ -70,4 +70,10 @@ export class PostService {
     deletePost(id: string | undefined) {
         return this.http.delete(`${BASE_URL}posts/${id}`);
     }
+    addComment(id: string, postData: any) {
+        this.http.patch<{}>(`${BASE_URL}posts/${id}/comment`, postData).subscribe(res => {
+            console.log(res);
+            
+        })
+    }
 }

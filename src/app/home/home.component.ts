@@ -77,6 +77,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
     
   }
+  onCommentCreated(post) {
+    this.postService.addComment(post._id, post);
+  }
 
   deletePost(id: string) {
     this.postService.deletePost(id).subscribe(() => {

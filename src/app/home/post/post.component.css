@@ -1,12 +1,21 @@
-mat-card {
+.example-card {
     max-width: 85vw;
     width: 400px;
     padding: 15px;
     margin: 10px auto;
+    margin-bottom: 5px;
 }
 .menu-spacer {
   flex: 1 1 auto;
 }
 .example-header-image {
   background-size: cover;
+}
+mat-accordion {
+  width: 400px;
+}
+mat-expansion-panel {
+  max-width: 85vw;
+  width: 430px;
+  margin: 0 auto;
 }
