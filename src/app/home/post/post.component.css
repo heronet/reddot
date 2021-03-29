@@ -7,3 +7,6 @@ mat-card {
 .menu-spacer {
   flex: 1 1 auto;
 }
+.example-header-image {
+  background-size: cover;
+}
