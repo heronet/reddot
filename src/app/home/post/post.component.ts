@@ -11,8 +11,10 @@ import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 export class PostComponent implements OnInit, OnDestroy {
   @Input() post: any;
-  @Input()  postDeletable = false;
+  @Input() postDeletable = false;
   @Input() userId: any;
+
+  date: string;
   
   @Output() spinnerEvent = new EventEmitter<void>();
   @Output() postDeleted = new EventEmitter<any>();
@@ -21,6 +23,7 @@ export class PostComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.spinnerEvent.emit();
+    this.date = this.post.date.replace('T', " at ").split('.')[0];
   }
 
   ngOnDestroy() {

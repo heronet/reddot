@@ -4,5 +4,6 @@ export interface Post {
     creator: string,
     id: string,
     creatorName: string,
-    imagePath: string
+    imagePath: string,
+    date: Date
 }
