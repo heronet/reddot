@@ -11,8 +11,8 @@
       <a mat-button [routerLink]="'/login'" *ngIf="!userIsAuthenticated">Login</a>
       <a mat-button [routerLink]="'/signup'" *ngIf="!userIsAuthenticated">Signup</a>
       <button mat-button *ngIf="userIsAuthenticated" (click)="onLogout()">Logout</button>
-      <button mat-icon-button (click)="searchBar = !searchBar"><mat-icon>search</mat-icon></button>
     </div>
+    <button mat-icon-button (click)="searchBar = !searchBar"><mat-icon>search</mat-icon></button>
     <button mat-icon-button>
         <mat-icon (click)="onToggle();">menu</mat-icon>
     </button>
