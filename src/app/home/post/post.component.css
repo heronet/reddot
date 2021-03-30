@@ -11,11 +11,3 @@
 .example-header-image {
   background-size: cover;
 }
-mat-accordion {
-  width: 400px;
-}
-mat-expansion-panel {
-  max-width: 85vw;
-  width: 430px;
-  margin: 0 auto;
-}

@@ -1,10 +1,14 @@
 <div class="container" *ngIf="user">
   <mat-tab-group>
-    <mat-tab label="Posts">
-      <app-personal-posts [username]="userData.Username" [userId]="userId"></app-personal-posts>
-    </mat-tab>
+    
     <mat-tab label="Primary">
       <br>
+
+      <div>
+        <img class="profile-image" [src]="'https://static.thenounproject.com/png/363640-200.png'" alt="Profile">
+        
+      </div>
+
       <!-- Basic Info -->
       <table mat-table [dataSource]="['Name', 'E-mail', 'Username']" class="mat-elevation-z8">
         <ng-container matColumnDef="header">
@@ -64,6 +68,9 @@
       </mat-paginator>
 
 
+    </mat-tab>
+    <mat-tab label="Posts">
+      <app-personal-posts [username]="userData.Username" [userId]="userId"></app-personal-posts>
     </mat-tab>
 
     <mat-tab label="Not sure about the name"> Dummy </mat-tab>

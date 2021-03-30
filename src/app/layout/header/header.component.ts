@@ -1,7 +1,9 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
+import { UserService } from 'src/app/user.service';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userIsAuthenticated = false;
   username: string = "";
   usernameButton = true;
+  searchBar = false;
   
   private authListenerSubs: Subscription = new Subscription;
   private nameListenerSubs: Subscription = new Subscription;
@@ -42,6 +45,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   onLogout() {
     this.authService.logoutUser();
+  }
+  search(form: NgForm) {
+    this.router.navigate(['/search', form.value.search]);
   }
 
 }

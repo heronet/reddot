@@ -1,0 +1,12 @@
+<div>
+    <div *ngFor="let user of users" class="user">
+        <div>
+            <img class="avatar" [src]="'https://static.thenounproject.com/png/363640-200.png'" alt="user image">
+        </div>
+        <div>
+            <p>Name: {{user.name}}</p>
+            <p>Email: {{user.email}}</p>
+            <p>Username: {{user.username}}</p>
+        </div>
+    </div>
+</div>

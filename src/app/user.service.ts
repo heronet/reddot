@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { environment } from "../environments/environment";
 import { User } from "./models/User";
 
@@ -9,7 +10,7 @@ const BASE_URL = environment.apiUrl;
     providedIn: "root"
 })
 export class UserService {
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient,  private router: Router) {
 
     }
     getUser(id: any) {
@@ -17,5 +18,8 @@ export class UserService {
     }
     updateUser(id: any, data: User) {
         return this.http.put<{data: any}>(`${BASE_URL}users/${id}`, data);
+    }
+    searchUsers(name: string) {
+        return this.http.get<[{}]>(`${BASE_URL}users?search=${name}`);
     }
 }

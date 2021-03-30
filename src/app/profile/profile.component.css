@@ -21,3 +21,9 @@ table {
 .example-full-width {
   width: 100%;
 }
+.profile-image {
+  display: block;
+  height: 200px;
+  width: 200px;
+  margin: 5px auto;
+}

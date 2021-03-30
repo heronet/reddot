@@ -21,6 +21,7 @@ import { StatusComponent } from './home/status/status.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PersonalPostsComponent } from './profile/personal-posts/personal-posts.component';
 import { DeleteDialogComponent } from './home/post/delete-dialog/delete-dialog.component';
+import { SearchResultComponent } from './layout/body/search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DeleteDialogComponent } from './home/post/delete-dialog/delete-dialog.c
     StatusComponent,
     ProfileComponent,
     PersonalPostsComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,

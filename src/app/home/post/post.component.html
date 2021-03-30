@@ -21,10 +21,7 @@
         <mat-icon>delete</mat-icon>
       </button>
     </mat-card-actions>
-      
-  </mat-card>
-
-<mat-expansion-panel class="mat-elevation-z3" style="user-select: none;" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel class="mat-elevation-z3" style="user-select: none;" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
       <mat-expansion-panel-header>
         <mat-panel-title>
           Comments
@@ -33,16 +30,18 @@
             {{panelOpenState ? 'Hide' : 'Show'}} Comments
         </mat-panel-description>
       </mat-expansion-panel-header>
-   <div>
-    <form (ngSubmit)="newComment(f)" #f="ngForm" *ngIf="postDeletable">
-      <mat-form-field appearance="outline" style="width: 100%;">
-        <textarea matInput required type="text" rows="4" ngModel placeholder="Add Comment" name="comment"></textarea>
-      </mat-form-field>
-      <button [disabled]="f.invalid" mat-raised-button type="submit" color="primary">Comment</button>
-    </form>
-  </div>
-    <mat-card *ngFor="let comment of comments" class="mat-elevation-z2" style="margin: 5px 0;">
-      <p style="font-size: 15px;">{{comment.author}}</p>
-      <mat-card-subtitle>{{comment.opinion}}</mat-card-subtitle>
-    </mat-card>
-</mat-expansion-panel>
+      <div>
+        <form (ngSubmit)="newComment(f)" #f="ngForm" *ngIf="postDeletable">
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <textarea matInput required type="text" rows="4" ngModel placeholder="Add Comment" name="comment"></textarea>
+          </mat-form-field>
+          <button [disabled]="f.invalid" mat-raised-button type="submit" color="primary">Comment</button>
+        </form>
+      </div>
+        <mat-card *ngFor="let comment of comments" class="mat-elevation-z2" style="margin: 5px 0;">
+          <p style="font-size: 15px;">{{comment.author}}</p>
+          <mat-card-subtitle>{{comment.opinion}}</mat-card-subtitle>
+        </mat-card>
+    </mat-expansion-panel>
+  </mat-card>
+
