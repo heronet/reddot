@@ -7,15 +7,18 @@
         </mat-card-header>
     </mat-card>
     <div class="bubble" *ngFor="let message of messages" [style]="(message.sender.username === currentUserName) ? 'justify-content: flex-end;': ''">
-        <mat-card [class]="(message.sender.username === currentUserName) ? 'sent': 'received'">{{message.text}} </mat-card>
+        <mat-card [class]="(message.sender.username === currentUserName) ? 'sent': 'received'">
+            {{message.text}}
+            <mat-card-subtitle><span style="font-size: 10px;">{{message.createdAt | date: 'short'}}</span></mat-card-subtitle>
+        </mat-card>
     </div>
     <div class="footer">
         <form class="example-form" #f="ngForm" (ngSubmit)="sendMessage(f)">
             <mat-form-field class="input">
                 <mat-label>Write your message</mat-label>
-                <textarea matInput placeholder="Ex. Howdy" name="text" required ngModel></textarea>
+                <textarea matInput placeholder="Ex. Howdy" name="text"  ngModel></textarea>
             </mat-form-field>
-            <button mat-icon-button type="submit" [disabled]="f.invalid"><mat-icon>send</mat-icon></button>
+            <button mat-icon-button type="submit" [disabled]="!f.dirty"><mat-icon>send</mat-icon></button>
         </form>
     </div>
 </div>
