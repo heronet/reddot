@@ -17,7 +17,6 @@ export class PostComponent implements OnInit, OnDestroy {
   @Input() username: any;
   panelOpenState = false;
 
-  date: string;
   comments: [{author: string, opinion: string}];
   
   @Output() spinnerEvent = new EventEmitter<void>();
@@ -28,7 +27,6 @@ export class PostComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.spinnerEvent.emit();
-    this.date = this.post.date.replace('T', " at ").split('.')[0];
     this.comments = this.post.comments;
   }
 

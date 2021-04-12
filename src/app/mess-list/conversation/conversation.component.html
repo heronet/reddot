@@ -12,6 +12,9 @@
             <mat-card-subtitle><span style="font-size: 10px;">{{message.createdAt | date: 'short'}}</span></mat-card-subtitle>
         </mat-card>
     </div>
+    <div style="margin-bottom: 100px;">
+        <span></span>
+    </div>
     <div class="footer">
         <form class="example-form" #f="ngForm" (ngSubmit)="sendMessage(f)">
             <mat-form-field class="input">
