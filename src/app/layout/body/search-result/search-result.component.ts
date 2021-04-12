@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 import { UserService } from 'src/app/user.service';
 
 @Component({
@@ -9,11 +10,15 @@ import { UserService } from 'src/app/user.service';
 })
 export class SearchResultComponent implements OnInit {
   users: any;
-  constructor(private userService: UserService, private router: ActivatedRoute) { }
+  currentUserName: string;
+  constructor(private userService: UserService, private router: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.currentUserName = this.authService.getUserName();
     this.router.params.subscribe(params => {
-      this.userService.searchUsers(params.name).subscribe(res => this.users = res)
+      this.userService.searchUsers(params.name).subscribe(res => {
+        this.users = res;
+      })
     });
   }
 }

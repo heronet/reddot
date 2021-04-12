@@ -1,0 +1,35 @@
+.bubble {
+    display: flex;
+    margin: 10px;
+}
+
+.sent {
+    background-color: lightgreen;
+    padding: 5px;
+}
+.received {
+    background-color: aquamarine;
+    padding: 5px;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  padding: 5px;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color:rgba(255, 255, 255, 0.842);
+}
+.container {
+    margin: 0 auto;
+}
+.input {
+  width: 70vw;
+}
+@media only screen and (min-width: 600px) {
+  .container {
+    max-width: 60vw;
+    margin: 0 auto;
+  }
+}

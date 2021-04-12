@@ -22,6 +22,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { PersonalPostsComponent } from './profile/personal-posts/personal-posts.component';
 import { DeleteDialogComponent } from './home/post/delete-dialog/delete-dialog.component';
 import { SearchResultComponent } from './layout/body/search-result/search-result.component';
+import { MessListComponent } from './mess-list/mess-list.component';
+import { ConversationComponent } from './mess-list/conversation/conversation.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { SearchResultComponent } from './layout/body/search-result/search-result
     ProfileComponent,
     PersonalPostsComponent,
     DeleteDialogComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    MessListComponent,
+    ConversationComponent,
   ],
   imports: [
     BrowserModule,

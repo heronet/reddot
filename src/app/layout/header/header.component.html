@@ -10,6 +10,7 @@
       <a mat-button [routerLink]="'/create'" *ngIf="userIsAuthenticated">Create Post</a>
       <a mat-button [routerLink]="'/login'" *ngIf="!userIsAuthenticated">Login</a>
       <a mat-button [routerLink]="'/signup'" *ngIf="!userIsAuthenticated">Signup</a>
+      <a mat-button [routerLink]="'/messages'" *ngIf="userIsAuthenticated">Messages</a>
       <button mat-button *ngIf="userIsAuthenticated" (click)="onLogout()">Logout</button>
     </div>
     <button mat-icon-button (click)="searchBar = !searchBar"><mat-icon>search</mat-icon></button>

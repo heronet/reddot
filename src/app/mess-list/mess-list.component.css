@@ -1,0 +1,10 @@
+.messages {
+    margin: 10px 10px; 
+    display: flex; 
+    justify-content: center;
+}
+.item:hover {
+    background-color: whitesmoke;
+    cursor: pointer;
+    user-select: none;
+}
