@@ -13,14 +13,14 @@
       <a mat-button [routerLink]="'/messages'" *ngIf="userIsAuthenticated">Messages</a>
       <button mat-button *ngIf="userIsAuthenticated" (click)="onLogout()">Logout</button>
     </div>
-    <button mat-icon-button (click)="searchBar = !searchBar"><mat-icon>search</mat-icon></button>
+    <button mat-icon-button (click)="searchBar = !searchBar" #sButton><mat-icon>search</mat-icon></button>
     <button mat-icon-button>
         <mat-icon (click)="onToggle();">menu</mat-icon>
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
-<mat-card *ngIf="searchBar">
-    <form #f="ngForm" (ngSubmit)="search(f)">
+<mat-card *ngIf="searchBar" #bar>
+    <form #f="ngForm" (ngSubmit)="search(f); searchBar = !searchBar">
         <mat-form-field  style="width: 100%;">
           <input type="Search" matInput placeholder="Search by name" ngModel name="search" required>
         </mat-form-field>

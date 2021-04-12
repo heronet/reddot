@@ -1,4 +1,4 @@
-<div>
+<div >
     <div *ngFor="let user of users" class="user">
         <div *ngIf="user.username !== currentUserName">
             <img class="avatar" [src]="'https://static.thenounproject.com/png/363640-200.png'" alt="user image">
@@ -7,7 +7,7 @@
             <p>Name: {{user.name}}</p>
             <p>Email: {{user.email}}</p>
             <p>Username: {{user.username}}</p>
-            <button mat-raised-button color="primary" [routerLink]="['/conversation', user.username]">Text User</button>
+            <button *ngIf="authed" mat-raised-button color="primary" [routerLink]="['/conversation', user.username]">Text User</button>
         </div>
     </div>
 </div>

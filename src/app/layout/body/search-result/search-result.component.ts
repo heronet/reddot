@@ -11,6 +11,8 @@ import { UserService } from 'src/app/user.service';
 export class SearchResultComponent implements OnInit {
   users: any;
   currentUserName: string;
+  authed: boolean;
+
   constructor(private userService: UserService, private router: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -18,6 +20,7 @@ export class SearchResultComponent implements OnInit {
     this.router.params.subscribe(params => {
       this.userService.searchUsers(params.name).subscribe(res => {
         this.users = res;
+        this.authed = this.authService.getAuthStatus();
       })
     });
   }
