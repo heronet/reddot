@@ -80,7 +80,7 @@ export class AuthService {
             this.username = authInformation.username;
             this.nameStatusListener.next(this.username);
             this.isAuthenticated = true;
-            this.setAuthTimer(expiresIn / 1000);
+            this.setAuthTimer(expiresIn);
             this.authStatusListener.next(true);
         }
     }
