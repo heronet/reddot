@@ -1,9 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { stringify } from '@angular/compiler/src/util';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Message } from 'src/app/models/Message';
 import { MessageService } from '../message.service';

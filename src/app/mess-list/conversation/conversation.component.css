@@ -8,7 +8,7 @@
     padding: 5px;
 }
 .received {
-    background-color: aquamarine;
+    background-color: cyan;
     padding: 5px;
 }
 
@@ -23,6 +23,7 @@
 }
 .container {
     margin: 0 auto;
+    background-image: url("/assets/chatbg.jpg");
 }
 .input {
   width: 70vw;
