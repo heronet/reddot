@@ -25,6 +25,9 @@ import { DeleteDialogComponent } from './home/post/delete-dialog/delete-dialog.c
 import { SearchResultComponent } from './layout/body/search-result/search-result.component';
 import { MessListComponent } from './mess-list/mess-list.component';
 import { ConversationComponent } from './mess-list/conversation/conversation.component';
+import { environment } from 'src/environments/environment';
+
+const BASE_URL = environment.socketUrl;
 
 @NgModule({
   declarations: [
@@ -52,7 +55,7 @@ import { ConversationComponent } from './mess-list/conversation/conversation.com
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    SocketIoModule.forRoot({url: "http://localhost:5000"})
+    SocketIoModule.forRoot({url: BASE_URL})
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
