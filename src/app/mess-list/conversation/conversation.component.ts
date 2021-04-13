@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { stringify } from '@angular/compiler/src/util';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Message } from 'src/app/models/Message';
 import { MessageService } from '../message.service';
@@ -12,10 +13,11 @@ import { MessageService } from '../message.service';
   templateUrl: './conversation.component.html',
   styleUrls: ['./conversation.component.css']
 })
-export class ConversationComponent implements OnInit {
+export class ConversationComponent implements OnInit, OnDestroy {
   recipientName: string;
   currentUserName: string;
   messages: Message[];
+  msgSub: Subscription;
 
   constructor(private route: ActivatedRoute, private messageService: MessageService, private authService: AuthService) { }
 
@@ -25,11 +27,14 @@ export class ConversationComponent implements OnInit {
       this.messageService.getConversation(this.recipientName).subscribe(mess => {
         this.messages = mess;
         this.currentUserName = this.authService.getUserName();
+        this.msgSub = this.messageService.getMessage().subscribe((msg: Message) => {
+          this.messages.push(msg);
+        })
       });
-      this.messageService.getMessage().subscribe((msg: Message) => {
-        this.messages.push(msg);
-      })
     })
+  }
+  ngOnDestroy() {
+    this.msgSub.unsubscribe();
   }
 
   sendMessage(f: NgForm) {
