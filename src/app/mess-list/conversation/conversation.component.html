@@ -1,7 +1,7 @@
 
 <mat-spinner [diameter]="50" style="margin: 10px auto;" *ngIf="!messages"></mat-spinner>
 <div class="container" *ngIf="messages">
-    <mat-card style="padding: 5px 10px ;padding-top: 10px;; color: rgba(240, 248, 255, 0.836); background-color: rgba(11, 66, 61, 0.747);">
+    <mat-card style="padding: 5px 10px ;padding-top: 10px; color: rgba(240, 248, 255, 0.836); background-color: rgba(11, 66, 61, 0.747);">
         <mat-card-header >
             <img src="./assets/avatar.png" mat-card-avatar alt="">
             <mat-card-title>{{recipientName}}</mat-card-title>
@@ -14,16 +14,13 @@
             <mat-card-subtitle><span style="font-size: 10px;">{{message.createdAt | date: 'short'}}</span></mat-card-subtitle>
         </mat-card>
     </div>
-    <div style="margin-bottom: 100px;">
+    <div style="margin-bottom: 45px;">
         <span></span>
     </div>
     <div class="footer">
-        <form class="example-form" #f="ngForm" (ngSubmit)="sendMessage(f)">
-            <mat-form-field class="input">
-                <mat-label>Write your message</mat-label>
-                <textarea matInput placeholder="Ex. Howdy" name="text"  ngModel></textarea>
-            </mat-form-field>
-            <button mat-icon-button type="submit" [disabled]="!f.dirty"><mat-icon>send</mat-icon></button>
+        <form id="form" action="" #f="ngForm" (ngSubmit)="sendMessage(f)">
+            <input id="input" autocomplete="off"  name="text"  ngModel/>
+            <button type="submit" [disabled]="!f.dirty">Send</button>
         </form>
     </div>
 </div>
