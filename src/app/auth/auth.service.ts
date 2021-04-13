@@ -115,7 +115,7 @@ export class AuthService {
         const username  = localStorage.getItem("username");
         this.nameStatusListener.next(username);
         if(!token) {
-            return {};
+            return null;
         }
         return {
             token: token, userId: userId, username

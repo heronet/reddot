@@ -26,6 +26,9 @@ export class ConversationComponent implements OnInit {
         this.messages = mess;
         this.currentUserName = this.authService.getUserName();
       });
+      this.messageService.getMessage().subscribe((msg: Message) => {
+        this.messages.push(msg);
+      })
     })
   }
 
@@ -34,7 +37,7 @@ export class ConversationComponent implements OnInit {
     const dto = {text: f.value.text, to: this.recipientName};
     f.reset();
     this.messageService.sendMessage(dto).subscribe(res => {
-      this.messages.push(res);
+      // this.messages.push(res);
     });
   }
 }

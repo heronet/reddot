@@ -11,6 +11,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SocketIoModule } from 'ngx-socket-io';
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './home/post/post.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
@@ -50,7 +51,8 @@ import { ConversationComponent } from './mess-list/conversation/conversation.com
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SocketIoModule.forRoot({url: "http://localhost:5000"})
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
