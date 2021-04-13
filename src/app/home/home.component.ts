@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
 
@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   private nameListenerSubs: Subscription = new Subscription;
   private postsListenerSubs: Subscription = new Subscription;
   postDeletable: any = undefined;
-  showSpinner = true;
 
   totalPosts = 0;
   postsPerPage = 5;
@@ -38,7 +37,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.postService.getPosts(this.postsPerPage, this.currentPage);
     this.userId = this.authService.getUserId();
     this.authStatusSubs = this.authService.getAuthStatusListener().subscribe(authStatus => {
-      this.showSpinner = false;
     })
     this.postsListenerSubs = this.postService.getPostUpdateListener().subscribe(posts => {
       this.posts = posts.posts;
@@ -59,9 +57,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.postsListenerSubs.unsubscribe();
     this.authStatusSubs.unsubscribe();
     this.nameListenerSubs.unsubscribe();
-  }
-  spinner() {
-    this.showSpinner = false;
   }
   onChangedPage(pageData: PageEvent) {
     this.currentPage = pageData.pageIndex + 1;
@@ -85,7 +80,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.postService.deletePost(id).subscribe(() => {
       this.postService.getPosts(this.postsPerPage, this.currentPage);
     }, () => {
-      this.showSpinner = false;
+      
     });
   }
 }

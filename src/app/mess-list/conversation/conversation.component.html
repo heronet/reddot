@@ -1,4 +1,5 @@
-<div class="container">
+<mat-spinner [diameter]="50" style="margin: 10px auto;" *ngIf="!messages"></mat-spinner>
+<div class="container" *ngIf="messages">
     <mat-card style="padding: 5px 5px ; margin-top: 5px;">
         <mat-card-header >
             <img src="./assets/avatar.png" mat-card-avatar alt="">

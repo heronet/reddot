@@ -19,14 +19,12 @@ export class PostComponent implements OnInit, OnDestroy {
 
   comments: [{author: string, opinion: string}];
   
-  @Output() spinnerEvent = new EventEmitter<void>();
   @Output() postDeleted = new EventEmitter<any>();
   @Output() commentCreated = new EventEmitter<any>();
 
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.spinnerEvent.emit();
     this.comments = this.post.comments;
   }
 

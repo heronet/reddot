@@ -1,3 +1,4 @@
+<mat-spinner [diameter]="50" style="margin: 10px auto;" *ngIf="!inbox"></mat-spinner>
 <div class="messages">
     <mat-list style="max-width: 600px;">
         <mat-list-item *ngFor="let name of receivedNames" class="item" [routerLink]="['/conversation', name]">
