@@ -69,10 +69,10 @@ export class PostService {
         })
     }
     likePost(id: string) {
-        return this.http.post(`${BASE_URL}posts/${id}/like`, {});
+        return this.http.post<{success: boolean, likes: number}>(`${BASE_URL}posts/${id}/like`, {});
     }
     unlikePost(id: string) {
-        return this.http.post(`${BASE_URL}posts/${id}/unlike`, {});
+        return this.http.post<{success: boolean, likes: number}>(`${BASE_URL}posts/${id}/unlike`, {});
     }
     deletePost(id: string | undefined) {
         return this.http.delete(`${BASE_URL}posts/${id}`);

@@ -34,9 +34,9 @@ export class PostComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.comments = this.post.comments;
     this.likesCount = this.post.likes.length;
-    this.likeSubscription = this.postService.getLikesCount().subscribe((likesCount: number) => {
-      this.likesCount = likesCount;
-    });
+    // this.likeSubscription = this.postService.getLikesCount().subscribe((likesCount: number) => {
+    //   this.likesCount = likesCount;
+    // });
   }
 
   ngOnDestroy() {
@@ -53,11 +53,13 @@ export class PostComponent implements OnInit, OnDestroy {
   likePost() {
     this.postService.likePost(this.post._id).subscribe(res => {
       this.postLiked = true;
+      this.likesCount = res.likes;
     });
   }
   unlikePost() {
     this.postService.unlikePost(this.post._id).subscribe(res => {
       this.postLiked = false;
+      this.likesCount = res.likes;
     })
   }
   deletePost() {
