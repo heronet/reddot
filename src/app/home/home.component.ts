@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   userId: any;
   username: any;
+  userLikes: any;
   
   constructor(public postService: PostService, public authService: AuthService) { }
 
@@ -46,10 +47,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(deletable => {
       this.postDeletable = deletable;
       this.userId = this.authService.getUserId();
+      
     });
     this.nameListenerSubs = this.authService.getUserNameSub().subscribe(name => {
       this.username = name;
     });
+    if(this.postDeletable) {
+      this.postService.getUserLikes().subscribe(likes => {
+          this.userLikes = likes;
+      });
+    }
     
   }
   ngOnDestroy() {
@@ -83,4 +90,5 @@ export class HomeComponent implements OnInit, OnDestroy {
       
     });
   }
+
 }

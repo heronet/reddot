@@ -7,6 +7,7 @@ import { AuthService } from "../auth/auth.service";
 import { Post } from '../models/Post';
 
 import { environment } from "../../environments/environment";
+import { Socket } from "ngx-socket-io";
 
 const BASE_URL = environment.apiUrl;
 
@@ -17,7 +18,7 @@ export class PostService {
     private posts: any[] = [];
     private postsUpdated = new Subject<{ posts: Post[], postCount: number }>();
 
-    constructor(private http: HttpClient, public authService: AuthService,  private router: Router) {}
+    constructor(private http: HttpClient, public authService: AuthService,  private router: Router, private socket: Socket) {}
 
     getPosts(postsPerPage: number, currentPage: number) {
         const params = `?pagesize=${postsPerPage}&page=${currentPage}`;
@@ -67,6 +68,12 @@ export class PostService {
             this.router.navigate(['/']);
         })
     }
+    likePost(id: string) {
+        return this.http.post(`${BASE_URL}posts/${id}/like`, {});
+    }
+    unlikePost(id: string) {
+        return this.http.post(`${BASE_URL}posts/${id}/unlike`, {});
+    }
     deletePost(id: string | undefined) {
         return this.http.delete(`${BASE_URL}posts/${id}`);
     }
@@ -75,5 +82,11 @@ export class PostService {
             console.log(res);
             
         })
+    }
+    getUserLikes() {
+        return this.http.get(`${BASE_URL}posts/users/likes`);
+    }
+    getLikesCount() {
+        return this.socket.fromEvent('like');
     }
 }
