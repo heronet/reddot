@@ -1,8 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
 import { PostService } from '../post.service';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
@@ -21,7 +19,6 @@ export class PostComponent implements OnInit, OnDestroy {
 
   panelOpenState = false;
   likesCount: number;
-  likeSubscription: Subscription;
   
 
   comments: [{author: string, opinion: string}];
@@ -34,13 +31,9 @@ export class PostComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.comments = this.post.comments;
     this.likesCount = this.post.likes.length;
-    // this.likeSubscription = this.postService.getLikesCount().subscribe((likesCount: number) => {
-    //   this.likesCount = likesCount;
-    // });
   }
 
   ngOnDestroy() {
-    this.likeSubscription.unsubscribe();
   }
   newComment(form: NgForm) {
     if(this.username) {
