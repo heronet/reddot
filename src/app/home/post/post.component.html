@@ -11,13 +11,12 @@
         {{post?.content}}
       </p>
     </mat-card-content>
-    <mat-card-actions style="display: flex;">
-      <button mat-stroked-button color="basic" (click)="likePost()" *ngIf="!postLiked && postDeletable">LIKE</button>
-      <button mat-stroked-button color="basic" (click)="unlikePost()" *ngIf="postLiked && postDeletable">UNLIKE</button>
-      <button mat-raised-button color="primary" [routerLink]="['/edit/', post._id]"
-        *ngIf="postDeletable && userId == post.creator">EDIT</button>
+    <mat-card-actions style="display: flex;" *ngIf="postDeletable">
+      <button mat-icon-button color="primary" (click)="likePost()" *ngIf="!postLiked"><mat-icon>thumb_up_off_alt</mat-icon></button>
+      <button mat-icon-button color="primary" (click)="unlikePost()" *ngIf="postLiked"><mat-icon>thumb_up</mat-icon></button>
+      <button mat-icon-button color="primary" [routerLink]="['/edit/', post._id]" *ngIf="userId == post.creator"><mat-icon>edit</mat-icon></button>
       <span class="menu-spacer"></span>
-      <button mat-mini-fab color="accent" (click)="deletePost()" *ngIf="postDeletable && userId == post.creator">
+      <button mat-mini-fab color="accent" (click)="deletePost()" *ngIf="userId == post.creator">
         <mat-icon>delete</mat-icon>
       </button>
     </mat-card-actions>
