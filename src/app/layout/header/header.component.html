@@ -8,8 +8,8 @@
     <button mat-button *ngIf="username" [style]="!usernameButton ? 'display: none;' : ''" class="username" (click)="onProfileClick()"><mat-icon>settings_accessibility</mat-icon> {{username}}</button>
     <div class="nav-links">
       <a mat-button [routerLink]="'/create'" *ngIf="userIsAuthenticated">Create Post</a>
-      <a mat-button [routerLink]="'/login'" *ngIf="!userIsAuthenticated">Login</a>
-      <a mat-button [routerLink]="'/signup'" *ngIf="!userIsAuthenticated">Signup</a>
+      <a mat-button [routerLink]="'auth/login'" *ngIf="!userIsAuthenticated">Login</a>
+      <a mat-button [routerLink]="'auth/signup'" *ngIf="!userIsAuthenticated">Signup</a>
       <a mat-button [routerLink]="'/messages'" *ngIf="userIsAuthenticated">Messages</a>
       <button mat-button *ngIf="userIsAuthenticated" (click)="onLogout()">Logout</button>
     </div>

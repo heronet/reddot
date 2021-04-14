@@ -43,7 +43,6 @@ export class AuthService {
 
     createUser(user: User) {
         this.http.post<User>(BASE_URL + "signup", user).subscribe(res => {
-            console.log(res);
             this.router.navigate(['/login']);
         }, error => {
             this.authStatusListener.next(false);

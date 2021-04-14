@@ -7,8 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HeaderComponent } from './layout/header/header.component';
 import { MaterialModule } from './material.module';
-import { LoginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocketIoModule } from 'ngx-socket-io';
@@ -23,8 +21,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { PersonalPostsComponent } from './profile/personal-posts/personal-posts.component';
 import { DeleteDialogComponent } from './home/post/delete-dialog/delete-dialog.component';
 import { SearchResultComponent } from './layout/body/search-result/search-result.component';
-import { MessListComponent } from './mess-list/mess-list.component';
-import { ConversationComponent } from './mess-list/conversation/conversation.component';
 import { environment } from 'src/environments/environment';
 
 const BASE_URL = environment.socketUrl;
@@ -33,8 +29,6 @@ const BASE_URL = environment.socketUrl;
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent,
-    SignupComponent,
     HomeComponent,
     PostComponent,
     CreatePostComponent,
@@ -44,8 +38,6 @@ const BASE_URL = environment.socketUrl;
     PersonalPostsComponent,
     DeleteDialogComponent,
     SearchResultComponent,
-    MessListComponent,
-    ConversationComponent,
   ],
   imports: [
     BrowserModule,
