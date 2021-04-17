@@ -42,8 +42,21 @@ export class AuthService {
     }
 
     createUser(user: User) {
-        this.http.post<User>(BASE_URL + "signup", user).subscribe(res => {
-            this.router.navigate(['/login']);
+        this.http.post<{token: string, userId: string, username: string}>(BASE_URL + "signup", user).subscribe(res => {
+            this.token = res.token;
+            if(this.token) {
+                // const expiresInDuration = res.expiresIn;
+                // this.setAuthTimer(expiresInDuration);
+                this.authStatusListener.next(true);
+                this.isAuthenticated = true;
+                this.userId = res.userId;
+                this.username = res.username;
+                this.nameStatusListener.next(res.username);
+                const now = new Date();
+                // const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
+                this.saveAuthData(this.token, this.userId, res.username);
+                this.router.navigate(['/']);
+            }
         }, error => {
             this.authStatusListener.next(false);
         });
