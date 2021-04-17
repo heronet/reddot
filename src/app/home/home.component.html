@@ -34,6 +34,7 @@
    </ng-container>
 
    <app-loading-post *ngIf="(posts.length < totalPosts)" style="margin: 50px auto;"></app-loading-post>
+   <app-loading-post *ngIf="postsPerPage == 5 && posts.length < 5" style="margin: 50px auto;"></app-loading-post>
   
    <!-- <mat-paginator *ngIf="posts.length > 0" [length]="totalPosts" [pageSize]="postsPerPage"
    [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event); top.scrollIntoView()"></mat-paginator> -->
