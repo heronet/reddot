@@ -65,9 +65,19 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.authStatusSubs.unsubscribe();
     this.nameListenerSubs.unsubscribe();
   }
+
+  /// Not USED ANYMORE
+
   onChangedPage(pageData: PageEvent) {
     this.currentPage = pageData.pageIndex + 1;
     this.postsPerPage = pageData.pageSize;
+    this.postService.getPosts(this.postsPerPage, this.currentPage);
+  }
+
+  
+  onScrollDown() {
+    this.currentPage = 1
+    this.postsPerPage += 5;
     this.postService.getPosts(this.postsPerPage, this.currentPage);
   }
 

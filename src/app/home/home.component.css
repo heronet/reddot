@@ -1,6 +1,8 @@
-.feed {
-    
-}
+
 mat-paginator {
     margin-top: 1rem;
+}
+.search-results {
+    height: 100%;
+    overflow-y: scroll;
 }

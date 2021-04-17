@@ -10,6 +10,8 @@ import { MaterialModule } from './material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocketIoModule } from 'ngx-socket-io';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './home/post/post.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
@@ -22,6 +24,7 @@ import { PersonalPostsComponent } from './profile/personal-posts/personal-posts.
 import { DeleteDialogComponent } from './home/post/delete-dialog/delete-dialog.component';
 import { SearchResultComponent } from './layout/body/search-result/search-result.component';
 import { environment } from 'src/environments/environment';
+import { LoadingPostComponent } from './layout/loading-post/loading-post.component';
 
 const BASE_URL = environment.socketUrl;
 
@@ -38,6 +41,7 @@ const BASE_URL = environment.socketUrl;
     PersonalPostsComponent,
     DeleteDialogComponent,
     SearchResultComponent,
+    LoadingPostComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,9 @@ const BASE_URL = environment.socketUrl;
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    SocketIoModule.forRoot({url: BASE_URL})
+    SocketIoModule.forRoot({url: BASE_URL}),
+    NgxSkeletonLoaderModule.forRoot(),
+    InfiniteScrollModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
