@@ -23,7 +23,8 @@ export class CreatePostComponent implements OnInit {
     this.form = new FormGroup({
       'title': new FormControl(null, {validators: [Validators.required, Validators.minLength(3)]}),
       'content': new FormControl(null, {validators: [Validators.required]}),
-      'image': new FormControl(null, {asyncValidators: [mimeType]})
+      // 'image': new FormControl(null, {asyncValidators: [mimeType]})
+      'image': new FormControl(null)
     });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if(paramMap.has('postId')) {
