@@ -10,4 +10,5 @@ export interface Message {
         username: string
     };
     createdAt: Date;
+    displayName: String
 }

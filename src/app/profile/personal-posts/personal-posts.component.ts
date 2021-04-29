@@ -4,6 +4,7 @@ import {
   OnInit
 } from '@angular/core';
 import { PostService } from 'src/app/home/post.service';
+import { Post } from 'src/app/models/Post';
 
 @Component({
   selector: 'app-personal-posts',
@@ -13,7 +14,7 @@ import { PostService } from 'src/app/home/post.service';
 export class PersonalPostsComponent implements OnInit {
   @Input() username: any;
   @Input() userId: any;
-  posts: any;
+  posts: Post[] = [];
   showSpinner: boolean | undefined;
 
   constructor(private postService: PostService) {}

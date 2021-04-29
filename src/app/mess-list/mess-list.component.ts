@@ -11,7 +11,7 @@ import { MessageService } from './message.service';
 })
 export class MessListComponent implements OnInit {
   receivedNames: string[];
-  inbox: {name: string, message: Message};
+  inbox: Message[];
   username: string;
 
   constructor(private messageService: MessageService, private authService: AuthService) { }
@@ -19,7 +19,6 @@ export class MessListComponent implements OnInit {
   ngOnInit(): void {
     this.messageService.getInbox().subscribe(res => {
       this.username = this.authService.getUserName();
-      this.receivedNames = Object.keys(res);
       this.inbox = res;
     })
   }

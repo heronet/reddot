@@ -6,7 +6,7 @@
       (scrolled)="onScrollDown()">
    <a #top></a>
    <app-status (postCreated)="onStatusUpdate($event)"></app-status>
-   <div *ngIf="postDeletable"
+   <div *ngIf="postDeletable && userLikes"
       >
       <app-post 
          *ngFor="let post of posts" 

@@ -1,12 +1,12 @@
 <mat-spinner [diameter]="50" style="margin: 10px auto;" *ngIf="!inbox"></mat-spinner>
 <div class="messages" *ngIf="inbox">
     <mat-list style="max-width: 600px;">
-        <mat-list-item *ngFor="let name of receivedNames" class="item" [routerLink]="['/messages/conversation', name]">
+        <mat-list-item *ngFor="let message of inbox" class="item" [routerLink]="['/messages/conversation', message.displayName]">
             <img matListAvatar [src]="'./assets/avatar.png'" alt="...">
-            <h3 matLine> {{name}} </h3>
+            <h3 matLine> {{message.displayName}} </h3>
             <p matLine>
-                <span> {{inbox[name].text.substr(0, 100)}}</span>
-                <span> -- 9:69 PM </span>
+                <span> {{message.text.substr(0, 100)}}</span>
+                <span> -- {{message.createdAt || '9:69 PM'}} </span>
             </p>
             <mat-divider></mat-divider>
         </mat-list-item>

@@ -15,7 +15,7 @@ export class MessageService {
 
     getInbox() {
         
-        return this.http.get<{name: string, message: Message}>(`${BASE_URL}messages/inbox`)
+        return this.http.get<Message[]>(`${BASE_URL}messages/inbox`)
     }
 
     getConversation(recipient: string) {
