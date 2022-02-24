@@ -1,9 +1,15 @@
 .user {
     margin: 5px auto;
-    width: 90vw;
+    max-width: 90vw;
     padding: 10px;
-    box-shadow: 4px 2px #888888cc;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
     display: flex;
+    background-color: azure;
+    border-radius: 5px;
+}
+.user:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 .avatar {
     height: 100px;
