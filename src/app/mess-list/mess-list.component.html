@@ -4,9 +4,9 @@
         <mat-list-item *ngFor="let message of inbox" class="item" [routerLink]="['/messages/conversation', message.displayName]">
             <img matListAvatar [src]="'./assets/avatar.png'" alt="...">
             <h3 matLine> {{message.displayName}} </h3>
-            <p matLine>
-                <span> {{message.text.substr(0, 100)}}</span>
-                <span> -- {{message.createdAt || '9:69 PM'}} </span>
+            <p matLine style="word-wrap: normal;">
+                <span> {{message.text.substr(0, 20)}}...</span>
+                <span> -- {{message.createdAt | date: 'short'}} </span>
             </p>
             <mat-divider></mat-divider>
         </mat-list-item>

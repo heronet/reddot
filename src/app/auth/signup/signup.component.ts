@@ -27,9 +27,10 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   onSubmit(form: NgForm) {
     this.isLoading = true;
+    let username = form.form.value.username.trim().toLowerCase().replace(/\s/g, '');
     const user: User =  {
       name: form.form.value.name.trim(),
-      username: form.form.value.username.trim().toLowerCase(),
+      username,
       email: form.form.value.email.trim().toLowerCase(),
       password: form.form.value.password.trim(),
     };

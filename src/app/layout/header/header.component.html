@@ -2,7 +2,7 @@
   <mat-toolbar-row class="">
     <button mat-button>
         <mat-icon >engineering</mat-icon>
-        <a style="text-decoration: none; color: black; margin-left: 10px;font-size: 25px;" routerLink="/">Reddot</a>
+        <a style="text-decoration: none; color: black; margin-left: 10px;font-size: 25px;" routerLink="/">E-Shomaj</a>
     </button>
     <span class="menu-spacer"></span>
     <button mat-button *ngIf="username" [style]="!usernameButton ? 'display: none;' : ''" class="username" (click)="onProfileClick()"><mat-icon>settings_accessibility</mat-icon> {{username}}</button>
@@ -11,6 +11,7 @@
       <a mat-button [routerLink]="'auth/login'" *ngIf="!userIsAuthenticated">Login</a>
       <a mat-button [routerLink]="'auth/signup'" *ngIf="!userIsAuthenticated">Signup</a>
       <a mat-button [routerLink]="'/messages'" *ngIf="userIsAuthenticated">Messages</a>
+      <a mat-button href="https://sellnet.ml">Market</a>
       <button mat-button *ngIf="userIsAuthenticated" (click)="onLogout()">Logout</button>
     </div>
     <button mat-icon-button (click)="searchBar = !searchBar" #sButton><mat-icon>search</mat-icon></button>
