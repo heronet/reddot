@@ -5,7 +5,7 @@
         <mat-card-header >
             <img src="./assets/avatar.png" mat-card-avatar alt="">
             <mat-card-title>{{recipientName}}</mat-card-title>
-            <mat-card-subtitle style="margin-bottom: 5px; color: rgba(240, 248, 255, 0.918);">Last active: 6:54 PM</mat-card-subtitle>
+            <mat-card-subtitle style="margin-bottom: 5px; color: rgba(240, 248, 255, 0.918);">Last active: {{((messages[messages.length - 1]) ? messages[messages.length - 1].createdAt : "2022-02-24T08:50:29.089Z") | date: 'short'}} </mat-card-subtitle>
         </mat-card-header>
     </mat-card>
     <div class="bubble" *ngFor="let message of messages" [style]="(message.sender.username === currentUserName) ? 'justify-content: flex-end;': ''">
