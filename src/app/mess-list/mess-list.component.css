@@ -1,11 +1,13 @@
 .messages {
-    margin: 0; 
-    display: flex; 
-    justify-content: center;
-    background-color: rgba(85, 85, 85, 0.205);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+.mat-list-item {
+  color: #fff;
 }
 .item:hover {
-    background-color: rgb(214, 208, 208);
-    cursor: pointer;
-    user-select: none;
+  background-color: rgba(214, 208, 208, 0.233);
+  cursor: pointer;
+  user-select: none;
 }

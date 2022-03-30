@@ -4,6 +4,7 @@
   padding: 15px;
   margin: 10px auto;
   margin-bottom: 5px;
+  background-color: #212121;
 }
 
 .menu-spacer {
@@ -14,5 +15,5 @@
   background-size: cover;
 }
 * {
-    user-select: none;
+  user-select: none;
 }
